@@ -53,7 +53,7 @@
       projectEyebrow: '04 / SEU PRÓXIMO PROJETO', projectTitle: 'O que você<br><span>quer criar?</span>', projectIntro: 'Organize sua ideia em um briefing: serviço, objetivo e referências. Um bom começo ajuda a definir o formato certo.',
       formLabels: ['Seu nome ou marca','Serviço de interesse','Conte sua ideia'], placeholders: ['Como podemos identificar seu projeto?','O que você quer comunicar? Para quem? Em quais canais?'],
       options: ['Filmes e campanhas com IA','Conteúdo para redes sociais','Imagens para marcas e produtos','Avatares e apresentadores digitais','Animação e pós-produção','Sites e experiências digitais','Quero combinar serviços'],
-      formButton: 'Enviar pelo WhatsApp <span>↗</span>', formNote: 'Ao continuar, seu briefing será aberto no WhatsApp para você revisar e enviar.', footer: 'Inteligência artificial. Direção humana.', back: 'Voltar ao início'
+      formButton: 'Enviar pelo WhatsApp <span>↗</span>', formNote: 'Ao continuar, seu briefing será aberto no WhatsApp para você revisar e enviar.', socialTitle: 'ACOMPANHE NAS REDES', footer: 'Inteligência artificial. Direção humana.', back: 'Voltar ao início'
     },
     en: {
       title: 'AI Creative Studio — Video, images and experiences',
@@ -79,7 +79,7 @@
       projectEyebrow: '04 / YOUR NEXT PROJECT', projectTitle: 'What do you<br><span>want to create?</span>', projectIntro: 'Organize your idea into a brief: service, objective and references. A strong start helps define the right format.',
       formLabels: ['Your name or brand','Service of interest','Tell us your idea'], placeholders: ['How should we identify your project?','What do you want to communicate? To whom? On which channels?'],
       options: ['AI films and campaigns','Social media content','Images for brands and products','Digital avatars and presenters','Animation and post-production','Websites and digital experiences','I want to combine services'],
-      formButton: 'Send via WhatsApp <span>↗</span>', formNote: 'Your brief will open in WhatsApp for you to review and send.', footer: 'Artificial intelligence. Human direction.', back: 'Back to top'
+      formButton: 'Send via WhatsApp <span>↗</span>', formNote: 'Your brief will open in WhatsApp for you to review and send.', socialTitle: 'FOLLOW ON SOCIAL MEDIA', footer: 'Artificial intelligence. Human direction.', back: 'Back to top'
     }
   };
 
@@ -103,7 +103,7 @@
     const faq = q('#duvidas'); setText(':scope > div:first-child .eyebrow', t.faqEyebrow, faq); setHtml(':scope > div:first-child h2', t.faqTitle, faq); qa('details', faq).forEach((detail, index) => { setSummary(detail, t.faqQuestions[index]); setText('p', t.faqAnswers[index], detail); });
     const project = q('#projeto'); setText(':scope > div .eyebrow', t.projectEyebrow, project); setHtml(':scope > div h2', t.projectTitle, project); setText(':scope > div > p:last-child', t.projectIntro, project);
     const labels = qa('form label', project); labels.forEach((label, index) => setLabel(label, t.formLabels[index])); q('input[name="name"]', project).placeholder = t.placeholders[0]; q('textarea[name="idea"]', project).placeholder = t.placeholders[1]; qa('select option', project).forEach((option, index) => { option.textContent = t.options[index]; option.value = t.options[index]; }); setHtml('form .button', t.formButton, project); setText('.form-note', t.formNote, project); setText('#status', '', project);
-    setText('footer p', t.footer); q('footer > a:last-child').setAttribute('aria-label', t.back);
+    setText('#social-title', t.socialTitle); setText('footer p', t.footer); q('footer > a:last-child').setAttribute('aria-label', t.back);
     qa('.lang-switch button').forEach((button) => button.setAttribute('aria-pressed', String(button.dataset.lang === lang)));
     try { localStorage.setItem('site-language', lang); } catch (_) {}
   }

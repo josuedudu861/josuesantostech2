@@ -26,10 +26,65 @@
   color: var(--cyan);
 }
 
+.social-section {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 4.5rem 5%;
+  border-top: 1px solid var(--line);
+}
+
+.social-links {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.social-links a {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.55rem;
+  padding: 1.5rem;
+  border: 1px solid var(--line);
+  border-radius: 0.5rem;
+  background: linear-gradient(145deg, #15151b, #09090c);
+  transition: border-color 180ms ease, transform 180ms ease;
+}
+
+.social-links a:hover {
+  border-color: var(--cyan);
+  transform: translateY(-2px);
+}
+
+.social-links span {
+  color: var(--cyan);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.social-links strong {
+  grid-column: 1;
+  font-size: 1.05rem;
+  font-weight: 500;
+}
+
+.social-links b {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: center;
+  font-size: 1.4rem;
+  font-weight: 400;
+}
+
 @media (max-width: 650px) {
   .lang-switch {
     order: 2;
     margin-left: auto;
+  }
+
+  .social-links {
+    grid-template-columns: 1fr;
   }
   .scroll-enabled .scroll-scene {
     height: 520svh !important;
