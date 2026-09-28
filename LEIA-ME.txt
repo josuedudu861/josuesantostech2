@@ -1,0 +1,7 @@
+PUBLICAÇÃO DO SITE
+
+1. Envie todo o conteúdo desta pasta para a raiz da hospedagem.
+2. Mantenha a pasta "assets" junto do arquivo "index.html".
+3. O vídeo da abertura é carregado de assets/hero-sequence.mp4.
+
+O site é estático: não precisa de banco de dados, servidor ou instalação de dependências.
