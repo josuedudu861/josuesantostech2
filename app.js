@@ -17,6 +17,7 @@ form.addEventListener('submit', (event) => {
 (() => {
   const scene = document.querySelector('.scroll-scene');
   const video = document.querySelector('.hero-video');
+  const introImage = document.querySelector('.hero-intro-image');
   const copy = document.querySelector('.hero-copy');
   const label = document.querySelector('.scroll-label');
   const fallbackDuration = 24.08;
@@ -35,14 +36,19 @@ form.addEventListener('submit', (event) => {
     const distance = scene.offsetHeight - scene.querySelector('.hero').offsetHeight;
     const progress = clamp(-rect.top / Math.max(1, distance), 0, 1);
     const duration = Number.isFinite(video.duration) && video.duration > 0 ? video.duration : fallbackDuration;
-    desiredTime = progress * Math.max(0, duration - 1 / 24);
+    const introEnd = 0.1;
+    const videoProgress = clamp((progress - introEnd) / (1 - introEnd), 0, 1);
+    desiredTime = videoProgress * Math.max(0, duration - 1 / 24);
+    const introOpacity = clamp(1 - progress / introEnd, 0, 1);
     const fade = clamp(1 - progress / 0.24, 0, 1);
     scene.style.setProperty('--scroll-progress', progress);
+    scene.style.setProperty('--intro-opacity', introOpacity);
     scene.style.setProperty('--copy-opacity', fade);
     scene.style.setProperty('--copy-offset', `${-30 * (1 - fade)}px`);
     scene.style.setProperty('--shade-opacity', 0.12 + fade * 0.88);
     scene.style.setProperty('--copy-events', fade < 0.05 ? 'none' : 'auto');
     copy.inert = fade < 0.05;
+    introImage.setAttribute('aria-hidden', introOpacity < 0.05 ? 'true' : 'false');
     seek();
   }
   function schedule() { if (!frame) frame = requestAnimationFrame(render); }

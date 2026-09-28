@@ -4,6 +4,38 @@
   position: sticky !important;
 }
 
+.hero-intro-image {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: left center;
+  background: #000;
+  opacity: var(--intro-opacity, 1);
+  transition: opacity 80ms linear;
+  pointer-events: none;
+}
+
+.hero-shade,
+.hero nav,
+.hero-copy,
+.hero-bottom,
+.scroll-progress {
+  z-index: 2;
+}
+
+.scroll-enabled .hero-copy {
+  margin-left: auto !important;
+  margin-right: 5% !important;
+  text-align: right;
+}
+
+.scroll-enabled .hero-shade {
+  background: linear-gradient(270deg, #050507ed 0%, #050507b0 37%, #05050715 75%), linear-gradient(0deg, #050507, transparent 20%) !important;
+}
+
 .lang-switch {
   display: flex;
   align-items: center;
@@ -77,7 +109,7 @@
   font-weight: 400;
 }
 
-@media (max-width: 650px) {
+@media (max-width: 800px) {
   .lang-switch {
     order: 2;
     margin-left: auto;
@@ -95,11 +127,36 @@
     min-height: 0 !important;
   }
 
+  .scroll-enabled .hero-copy {
+    right: 6% !important;
+    left: auto !important;
+    width: min(88%, 36rem);
+    margin: 0 !important;
+  }
+
+  .scroll-enabled .hero-shade {
+    background: linear-gradient(270deg, #050507e8 0%, #050507a8 58%, transparent 100%), linear-gradient(0deg, #050507 0%, transparent 45%) !important;
+  }
+
   .hero-video {
+    object-position: center center;
+  }
+
+  .hero-intro-image {
     object-position: center center;
   }
 
   .scroll-progress {
     display: block !important;
+  }
+}
+
+@media (min-width: 651px) and (max-width: 800px) {
+  .scroll-enabled .hero-copy {
+    right: auto !important;
+    left: auto !important;
+    width: min(62%, 36rem);
+    margin-left: auto !important;
+    margin-right: 6% !important;
   }
 }
