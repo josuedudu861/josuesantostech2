@@ -1,0 +1,24 @@
+/* iOS and Android: keep the scroll scene pinned while the video seeks inline. */
+.scroll-enabled .scroll-scene > .hero {
+  position: -webkit-sticky !important;
+  position: sticky !important;
+}
+
+@media (max-width: 650px) {
+  .scroll-enabled .scroll-scene {
+    height: 520svh !important;
+  }
+
+  .scroll-enabled .scroll-scene > .hero {
+    height: 100svh !important;
+    min-height: 0 !important;
+  }
+
+  .hero-video {
+    object-position: center center;
+  }
+
+  .scroll-progress {
+    display: block !important;
+  }
+}

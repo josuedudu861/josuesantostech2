@@ -20,7 +20,7 @@ form.addEventListener('submit', (event) => {
   const video = document.querySelector('.hero-video');
   const copy = document.querySelector('.hero-copy');
   const label = document.querySelector('.scroll-label');
-  const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+  const fallbackDuration = 24.08;
   let enabled = false;
   let frame = 0;
   let desiredTime = 0;
@@ -35,7 +35,8 @@ form.addEventListener('submit', (event) => {
     const rect = scene.getBoundingClientRect();
     const distance = scene.offsetHeight - scene.querySelector('.hero').offsetHeight;
     const progress = clamp(-rect.top / Math.max(1, distance), 0, 1);
-    desiredTime = progress * Math.max(0, video.duration - 1 / 24);
+    const duration = Number.isFinite(video.duration) && video.duration > 0 ? video.duration : fallbackDuration;
+    desiredTime = progress * Math.max(0, duration - 1 / 24);
     const fade = clamp(1 - progress / 0.24, 0, 1);
     scene.style.setProperty('--scroll-progress', progress);
     scene.style.setProperty('--copy-opacity', fade);
@@ -47,18 +48,22 @@ form.addEventListener('submit', (event) => {
   }
   function schedule() { if (!frame) frame = requestAnimationFrame(render); }
   function configure() {
-    enabled = !reduced.matches && Number.isFinite(video.duration) && video.duration > 0 && !video.error;
+    enabled = !video.error;
     document.documentElement.classList.toggle('scroll-enabled', enabled);
-    if (enabled) { label.textContent = 'ROLE PARA ANIMAR ↓'; video.pause(); schedule(); }
+    if (enabled) {
+      label.textContent = 'ROLE PARA ANIMAR ↓';
+      video.muted = true;
+      video.pause();
+      schedule();
+    }
     else { scene.removeAttribute('style'); copy.inert = false; label.textContent = 'EXPLORE OS SERVIÇOS ↓'; }
   }
-  video.addEventListener('loadedmetadata', configure);
-  video.addEventListener('loadeddata', schedule);
+  ['loadedmetadata', 'loadeddata', 'canplay', 'durationchange', 'progress'].forEach((eventName) => video.addEventListener(eventName, configure));
   video.addEventListener('seeked', seek);
   video.addEventListener('error', configure);
-  reduced.addEventListener('change', configure);
   window.addEventListener('scroll', schedule, { passive: true });
   window.addEventListener('resize', schedule);
   window.addEventListener('pageshow', schedule);
+  video.load();
   configure();
 })();
