@@ -4,7 +4,33 @@
   position: sticky !important;
 }
 
+.lang-switch {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-left: auto;
+  color: #777784;
+  font-size: 0.75rem;
+}
+
+.lang-switch button {
+  padding: 0.35rem;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.lang-switch button[aria-pressed="true"] {
+  color: var(--cyan);
+}
+
 @media (max-width: 650px) {
+  .lang-switch {
+    order: 2;
+    margin-left: auto;
+  }
   .scroll-enabled .scroll-scene {
     height: 520svh !important;
   }

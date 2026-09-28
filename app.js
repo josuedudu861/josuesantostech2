@@ -3,16 +3,15 @@ form.addEventListener('submit', (event) => {
   event.preventDefault();
   if (!form.reportValidity()) return;
   const values = new FormData(form);
-  const text = `BRIEFING — PROJETO COM IA\n\nNome / marca: ${values.get('name')}\nServiço: ${values.get('service')}\n\nIdeia e objetivo:\n${values.get('idea')}\n\nPara complementar:\n- Referências visuais\n- Canais e formatos\n- Prazo desejado\n- Materiais disponíveis\n`;
-  const url = URL.createObjectURL(new Blob([text], { type: 'text/plain;charset=utf-8' }));
-  const link = document.createElement('a');
-  link.href = url;
-  link.download = 'briefing-projeto-ia.txt';
-  document.body.appendChild(link);
-  link.click();
-  link.remove();
-  setTimeout(() => URL.revokeObjectURL(url), 1000);
-  document.querySelector('#status').textContent = 'Briefing preparado para download. Nenhum dado foi enviado.';
+  const isEnglish = document.documentElement.lang === 'en';
+  const text = isEnglish
+    ? `AI PROJECT BRIEF\n\nName / brand: ${values.get('name')}\nService: ${values.get('service')}\n\nIdea and objective:\n${values.get('idea')}`
+    : `BRIEFING — PROJETO COM IA\n\nNome / marca: ${values.get('name')}\nServiço: ${values.get('service')}\n\nIdeia e objetivo:\n${values.get('idea')}`;
+  const whatsappUrl = `https://wa.me/5561982116291?text=${encodeURIComponent(text)}`;
+  window.open(whatsappUrl, '_blank', 'noopener');
+  document.querySelector('#status').textContent = isEnglish
+    ? 'WhatsApp opened with your project brief.'
+    : 'O WhatsApp foi aberto com o briefing do projeto.';
 });
 
 (() => {
@@ -51,7 +50,7 @@ form.addEventListener('submit', (event) => {
     enabled = !video.error;
     document.documentElement.classList.toggle('scroll-enabled', enabled);
     if (enabled) {
-      label.textContent = 'ROLE PARA ANIMAR ↓';
+      label.textContent = document.documentElement.lang === 'en' ? 'SCROLL TO ANIMATE ↓' : 'ROLE PARA ANIMAR ↓';
       video.muted = true;
       video.pause();
       schedule();
