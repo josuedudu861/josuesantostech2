@@ -137,6 +137,77 @@
   font-weight: 400;
 }
 
+.about {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  align-items: center;
+  gap: clamp(2.5rem, 7vw, 7rem);
+}
+
+.about-visual {
+  position: relative;
+  overflow: hidden;
+  min-height: 34rem;
+  border: 1px solid var(--line);
+  border-radius: 0.5rem;
+  background: #08080a;
+}
+
+.about-visual::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, #050507cc 0%, transparent 38%);
+  pointer-events: none;
+}
+
+.about-visual img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 34rem;
+  object-fit: cover;
+  object-position: center 58%;
+}
+
+.about-visual > span {
+  position: absolute;
+  z-index: 1;
+  left: 1.5rem;
+  right: 1.5rem;
+  bottom: 1.35rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  color: #d5d5dd;
+}
+
+.about-copy > p:not(.eyebrow) {
+  max-width: 38rem;
+  color: var(--muted);
+  font-size: 1.08rem;
+  line-height: 1.85;
+}
+
+.about-signature {
+  display: grid;
+  gap: 0.35rem;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+}
+
+.about-signature strong {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.about-signature span {
+  color: var(--cyan);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
 @media (max-width: 800px) {
   .lang-switch {
     order: 2;
@@ -167,7 +238,8 @@
   }
 
   .hero-video {
-    object-position: center center;
+    object-fit: cover !important;
+    object-position: 20% center !important;
   }
 
   .hero-intro-image {
@@ -176,6 +248,16 @@
 
   .scroll-progress {
     display: block !important;
+  }
+
+  .about {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .about-visual,
+  .about-visual img {
+    min-height: 31rem;
   }
 }
 
@@ -186,5 +268,21 @@
     width: min(62%, 36rem);
     margin-left: auto !important;
     margin-right: 6% !important;
+  }
+}
+
+/* Keep the first content section close to the scroll scene on phones,
+   including landscape devices whose CSS width is slightly above 800px. */
+@media (max-width: 900px), (max-height: 600px) and (pointer: coarse) {
+  .services.section {
+    padding-top: 2rem;
+  }
+}
+
+@media (max-height: 600px) and (pointer: coarse) {
+  .hero-video,
+  .hero-intro-image {
+    object-fit: cover !important;
+    object-position: center center !important;
   }
 }
