@@ -241,7 +241,8 @@
     grid-template-columns: 1fr;
   }
   .scroll-enabled .scroll-scene {
-    height: 520svh !important;
+    /* A shorter track avoids an excessive gap after the last frame. */
+    height: 360svh !important;
   }
 
   .scroll-enabled .scroll-scene > .hero {
@@ -261,8 +262,15 @@
   }
 
   .hero-video {
-    object-fit: cover !important;
-    object-position: 20% center !important;
+    /* Preserve the complete 16:9 frame on phones so the person and all six
+       AI emblems stay visible and proportional. */
+    inset: 50% 0 auto !important;
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 16 / 9;
+    object-fit: contain !important;
+    object-position: center center !important;
+    transform: translateY(-43%);
   }
 
   .hero-intro-image {
@@ -306,7 +314,14 @@
 @media (max-height: 600px) and (pointer: coarse) {
   .hero-video,
   .hero-intro-image {
-    object-fit: cover !important;
+    object-fit: contain !important;
     object-position: center center !important;
+  }
+
+  .hero-video {
+    inset: 50% 0 auto !important;
+    width: 100% !important;
+    height: auto !important;
+    transform: translateY(-50%);
   }
 }
