@@ -193,6 +193,24 @@
   line-height: 1.85;
 }
 
+.about-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: 1.5rem;
+}
+
+.about-skills span {
+  padding: 0.55rem 0.75rem;
+  border: 1px solid #83f1f544;
+  border-radius: 999px;
+  color: #d9fcfd;
+  background: #83f1f50a;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 .about-signature {
   display: grid;
   gap: 0.35rem;

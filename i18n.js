@@ -15,7 +15,7 @@
   const copy = {
     pt: {
       title: 'Criação com IA — Vídeos, imagens e experiências',
-      description: 'Produção criativa com inteligência artificial: vídeos publicitários, imagens, avatares e experiências digitais.',
+      description: 'Produção criativa com inteligência artificial: vídeos publicitários, imagens, sites, landing pages e experiências digitais.',
       nav: ['Serviços', 'Processo', 'Dúvidas'], cta: 'Seu projeto ↗',
       heroEyebrow: 'ESTÚDIO CRIATIVO · INTELIGÊNCIA ARTIFICIAL',
       heroTitle: 'O próximo nível<br>da sua marca<br><em>começa aqui.</em>',
@@ -43,9 +43,10 @@
         'Animação de imagens e elementos de marca, edição, transições, tratamento de cor e composição sonora.',
         'Estrutura de conteúdo, textos, design e versão para celular. Integrações e hospedagem são combinadas conforme a necessidade.'
       ],
-      aboutEyebrow: 'SOBRE / APRESENTAÇÃO', aboutTitle: 'Especialista em vídeos.<br><span>Criações com IA.</span>',
-      aboutParagraphs: ['Sou Josue Santos, especialista em produção de vídeos e criação de imagens, personagens e experiências digitais com inteligência artificial.','Combino direção criativa, narrativa e tecnologia para transformar conceitos em conteúdos cinematográficos, claros e prontos para marcas e redes sociais.'],
-      aboutCaption: 'JOSUE SANTOS · ESPECIALISTA EM CRIAÇÕES COM IA', aboutRole: 'Especialista em vídeos e criações com IA', aboutAlt: 'Apresentação em vídeo de Josue Santos',
+      aboutEyebrow: 'SOBRE / APRESENTAÇÃO', aboutTitle: 'Especialista em vídeos.<br><span>Sites e criações com IA.</span>',
+      aboutParagraphs: ['Sou Josue Santos, especialista em vídeos, imagens, personagens e experiências digitais produzidas com inteligência artificial.','Também desenvolvo sites e landing pages profissionais que apresentam serviços, fortalecem marcas e transformam atenção em novas oportunidades de negócio.'],
+      aboutSkills: ['Vídeos com IA','Criação visual','Sites','Landing pages'],
+      aboutCaption: 'JOSUE SANTOS · VÍDEOS, IA E EXPERIÊNCIAS DIGITAIS', aboutRole: 'Vídeos · Inteligência artificial · Experiências digitais', aboutAlt: 'Apresentação em vídeo de Josue Santos',
       processEyebrow: '02 / DA IDEIA À ENTREGA', processTitle: 'Tecnologia no processo.<br><span>Intenção em cada detalhe.</span>', processIntro: 'Você participa das decisões criativas.<br>Cada etapa tem um objetivo claro.',
       stepLabels: ['01 — ENTENDER','02 — DIRECIONAR','03 — CRIAR','04 — FINALIZAR'], stepTitles: ['Briefing & objetivo','Conceito & roteiro','Produção & curadoria','Ajustes & entrega'],
       stepDescriptions: ['Definimos público, mensagem, referências e onde o conteúdo será publicado.','Organizamos a narrativa e o estilo visual para sua aprovação antes da produção.','Geramos, selecionamos e editamos os elementos que melhor traduzem a ideia.','Revisamos o material e preparamos os arquivos nos formatos combinados.'],
@@ -60,7 +61,7 @@
     },
     en: {
       title: 'AI Creative Studio — Video, images and experiences',
-      description: 'Creative production with artificial intelligence: advertising videos, images, avatars and digital experiences.',
+      description: 'Creative production with artificial intelligence: advertising videos, images, websites, landing pages and digital experiences.',
       nav: ['Services', 'Process', 'Questions'], cta: 'Your project ↗',
       heroEyebrow: 'CREATIVE STUDIO · ARTIFICIAL INTELLIGENCE', heroTitle: 'The next level<br>of your brand<br><em>starts here.</em>',
       heroIntro: 'Videos, images and digital experiences.<br>From the first idea to the final frame, with AI<br class="desktop"> and creative direction.',
@@ -72,9 +73,10 @@
       serviceTags: [['Advertising','Corporate','Products'],['Reels','Shorts','TikTok'],['Products','Campaigns','Key visuals'],['Avatars','Presentations','Tutorials'],['Image to video','Motion','Editing'],['Landing pages','Portfolios','Websites']],
       detailLabel: 'What is included',
       serviceDetails: ['Concept, script, scene planning, visual generation, editing and final delivery. Duration, voice, music and formats are set in the scope.','Short scripts, vertical editing, captions and platform adaptations, with variations for different campaigns.','Style definition, environments, image generation and retouching, with review of packaging and brand elements.','Character creation, visual style and presentation script. Use of a real person’s image or voice requires authorization.','Animation of images and brand elements, editing, transitions, color treatment and sound composition.','Content structure, copy, design and mobile version. Integrations and hosting are defined as needed.'],
-      aboutEyebrow: 'ABOUT / INTRODUCTION', aboutTitle: 'Video specialist.<br><span>AI-powered creation.</span>',
-      aboutParagraphs: ['I am Josue Santos, a specialist in video production and the creation of images, characters and digital experiences with artificial intelligence.','I combine creative direction, storytelling and technology to turn concepts into cinematic content built for brands and social media.'],
-      aboutCaption: 'JOSUE SANTOS · AI CREATION SPECIALIST', aboutRole: 'Video and AI creation specialist', aboutAlt: 'Video introduction by Josue Santos',
+      aboutEyebrow: 'ABOUT / INTRODUCTION', aboutTitle: 'Video specialist.<br><span>Websites and AI creation.</span>',
+      aboutParagraphs: ['I am Josue Santos, a specialist in videos, images, characters and digital experiences produced with artificial intelligence.','I also create professional websites and landing pages that present services, strengthen brands and turn attention into new business opportunities.'],
+      aboutSkills: ['AI video','Visual creation','Websites','Landing pages'],
+      aboutCaption: 'JOSUE SANTOS · VIDEO, AI AND DIGITAL EXPERIENCES', aboutRole: 'Video · Artificial intelligence · Digital experiences', aboutAlt: 'Video introduction by Josue Santos',
       processEyebrow: '02 / FROM IDEA TO DELIVERY', processTitle: 'Technology in the process.<br><span>Purpose in every detail.</span>', processIntro: 'You take part in the creative decisions.<br>Every stage has a clear goal.',
       stepLabels: ['01 — UNDERSTAND','02 — DIRECT','03 — CREATE','04 — FINISH'], stepTitles: ['Brief & objective','Concept & script','Production & curation','Revisions & delivery'],
       stepDescriptions: ['We define the audience, message, references and publishing channels.','We organize the narrative and visual language for your approval before production.','We generate, select and edit the elements that best translate the idea.','We review the material and prepare the agreed delivery formats.'],
@@ -105,7 +107,7 @@
     setText('.nav-cta', t.cta); setText('.hero-copy .eyebrow', t.heroEyebrow); setHtml('.hero-copy h1', t.heroTitle); setHtml('.hero-copy .intro', t.heroIntro); setHtml('.hero-copy .button', t.heroButton); setText('.hero-bottom > span:first-child', t.heroBottom); setText('.scroll-label', t.scroll);
     const services = q('#servicos'); setText('.section-head .eyebrow', t.servicesEyebrow, services); setHtml('.section-head h2', t.servicesTitle, services); setHtml('.section-head > p', t.servicesIntro, services);
     qa('.service', services).forEach((service, index) => { setText('.number', t.serviceLabels[index], service); setHtml('h3', t.serviceTitles[index], service); setText(':scope > p', t.serviceDescriptions[index], service); qa('.tags span', service).forEach((tag, tagIndex) => { tag.textContent = t.serviceTags[index][tagIndex]; }); const detail = q('details', service); setSummary(detail, t.detailLabel); setText('p', t.serviceDetails[index], detail); });
-    const about = q('#sobre'); setText('.eyebrow', t.aboutEyebrow, about); setHtml('h2', t.aboutTitle, about); qa('.about-copy > p:not(.eyebrow)', about).forEach((el, index) => { el.textContent = t.aboutParagraphs[index]; }); setText('.about-visual > span', t.aboutCaption, about); setText('.about-signature span', t.aboutRole, about); q('.about-video', about).setAttribute('aria-label', t.aboutAlt);
+    const about = q('#sobre'); setText('.eyebrow', t.aboutEyebrow, about); setHtml('h2', t.aboutTitle, about); qa('.about-copy > p:not(.eyebrow)', about).forEach((el, index) => { el.textContent = t.aboutParagraphs[index]; }); qa('.about-skills span', about).forEach((el, index) => { el.textContent = t.aboutSkills[index]; }); setText('.about-visual > span', t.aboutCaption, about); setText('.about-signature span', t.aboutRole, about); q('.about-video', about).setAttribute('aria-label', t.aboutAlt);
     const process = q('#processo'); setText('.section-head .eyebrow', t.processEyebrow, process); setHtml('.section-head h2', t.processTitle, process); setHtml('.section-head > p', t.processIntro, process); qa('.steps article', process).forEach((step, index) => { setText('b', t.stepLabels[index], step); setText('h3', t.stepTitles[index], step); setText('p', t.stepDescriptions[index], step); }); qa('.formats span', process).forEach((el, index) => { el.textContent = t.formats[index]; });
     const faq = q('#duvidas'); setText(':scope > div:first-child .eyebrow', t.faqEyebrow, faq); setHtml(':scope > div:first-child h2', t.faqTitle, faq); qa('details', faq).forEach((detail, index) => { setSummary(detail, t.faqQuestions[index]); setText('p', t.faqAnswers[index], detail); });
     const project = q('#projeto'); setText(':scope > div .eyebrow', t.projectEyebrow, project); setHtml(':scope > div h2', t.projectTitle, project); setText(':scope > div > p:last-child', t.projectIntro, project);
