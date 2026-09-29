@@ -72,3 +72,25 @@ form.addEventListener('submit', (event) => {
   video.load();
   configure();
 })();
+
+/* Keep the presentation film decorative: no player chrome, silent autoplay
+   and an extra play attempt when mobile browsers allow media after a gesture. */
+(() => {
+  const video = document.querySelector('.about-video');
+  if (!video) return;
+  video.controls = false;
+  video.muted = true;
+  video.defaultMuted = true;
+  video.loop = true;
+  video.playsInline = true;
+  const play = () => video.play().catch(() => {});
+  video.addEventListener('canplay', play);
+  window.addEventListener('pageshow', play);
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) play();
+  });
+  ['touchstart', 'pointerdown', 'scroll'].forEach((eventName) => {
+    window.addEventListener(eventName, play, { passive: true, once: true });
+  });
+  play();
+})();
