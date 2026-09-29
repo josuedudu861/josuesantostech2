@@ -21,9 +21,14 @@
 .hero-shade,
 .hero nav,
 .hero-copy,
+.scroll-showcase,
 .hero-bottom,
 .scroll-progress {
   z-index: 2;
+}
+
+.scroll-showcase {
+  display: none;
 }
 
 .scroll-enabled .hero-copy {
@@ -279,6 +284,57 @@
 
   .scroll-progress {
     display: block !important;
+  }
+
+  .scroll-showcase {
+    position: absolute;
+    right: 6%;
+    bottom: 5.2rem;
+    left: 6%;
+    display: block;
+    padding: 1rem;
+    border: 1px solid #83f1f538;
+    border-radius: 0.45rem;
+    background: linear-gradient(115deg, #091417e8, #08080bcc);
+    box-shadow: 0 1rem 3rem #0009, inset 0 1px #ffffff12;
+    opacity: var(--showcase-opacity, 0);
+    transform: translateY(var(--showcase-offset, 1rem));
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    pointer-events: none;
+  }
+
+  .scroll-showcase > p {
+    margin: 0 0 0.8rem;
+    color: var(--cyan);
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+  }
+
+  .scroll-showcase > div {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.45rem;
+  }
+
+  .scroll-showcase span {
+    display: grid;
+    gap: 0.3rem;
+    padding: 0.65rem 0.55rem;
+    border-top: 1px solid #ffffff30;
+  }
+
+  .scroll-showcase b {
+    color: #83f1f5a6;
+    font-size: 0.62rem;
+    font-weight: 500;
+  }
+
+  .scroll-showcase i {
+    color: #f4f4f6;
+    font-size: 0.7rem;
+    font-style: normal;
+    letter-spacing: 0.08em;
   }
 
   .about {

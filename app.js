@@ -19,6 +19,7 @@ form.addEventListener('submit', (event) => {
   const video = document.querySelector('.hero-video');
   const introImage = document.querySelector('.hero-intro-image');
   const copy = document.querySelector('.hero-copy');
+  const showcase = document.querySelector('.scroll-showcase');
   const label = document.querySelector('.scroll-label');
   const fallbackDuration = 24.08;
   let enabled = false;
@@ -41,13 +42,19 @@ form.addEventListener('submit', (event) => {
     desiredTime = videoProgress * Math.max(0, duration - 1 / 24);
     const introOpacity = clamp(1 - progress / introEnd, 0, 1);
     const fade = clamp(1 - progress / 0.24, 0, 1);
+    const showcaseIn = clamp((progress - 0.1) / 0.14, 0, 1);
+    const showcaseOut = clamp((1 - progress) / 0.08, 0, 1);
+    const showcaseOpacity = showcaseIn * showcaseOut;
     scene.style.setProperty('--scroll-progress', progress);
     scene.style.setProperty('--intro-opacity', introOpacity);
     scene.style.setProperty('--copy-opacity', fade);
     scene.style.setProperty('--copy-offset', `${-30 * (1 - fade)}px`);
     scene.style.setProperty('--shade-opacity', 0.12 + fade * 0.88);
     scene.style.setProperty('--copy-events', fade < 0.05 ? 'none' : 'auto');
+    scene.style.setProperty('--showcase-opacity', showcaseOpacity);
+    scene.style.setProperty('--showcase-offset', `${16 * (1 - showcaseIn)}px`);
     copy.inert = fade < 0.05;
+    showcase.setAttribute('aria-hidden', showcaseOpacity < 0.05 ? 'true' : 'false');
     introImage.setAttribute('aria-hidden', introOpacity < 0.05 ? 'true' : 'false');
     seek();
   }

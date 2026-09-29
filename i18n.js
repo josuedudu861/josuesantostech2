@@ -21,6 +21,7 @@
       heroTitle: 'O próximo nível<br>da sua marca<br><em>começa aqui.</em>',
       heroIntro: 'Vídeos, imagens e experiências digitais.<br>Da primeira ideia ao último frame, com IA<br class="desktop"> e direção criativa.',
       heroButton: 'Explore os serviços <span>↓</span>', heroBottom: 'IDEIAS HUMANAS. POSSIBILIDADES EXPANDIDAS.', scroll: 'ROLE PARA ANIMAR ↓',
+      scrollShowcaseTitle: 'DA IDEIA AO IMPACTO', scrollShowcaseStages: ['IDEIA','CRIAÇÃO','MOVIMENTO'],
       servicesEyebrow: '01 / O QUE PODEMOS CRIAR', servicesTitle: 'Sua ideia.<br><span>Em outra dimensão.</span>',
       servicesIntro: 'Conteúdo pensado para o seu negócio.<br>Escolha o formato. A criação começa<br>com o que sua marca precisa comunicar.',
       serviceLabels: ['01 / VÍDEO', '02 / SOCIAL', '03 / IMAGEM', '04 / PERSONAGENS', '05 / MOVIMENTO', '06 / DIGITAL'],
@@ -66,6 +67,7 @@
       heroEyebrow: 'CREATIVE STUDIO · ARTIFICIAL INTELLIGENCE', heroTitle: 'The next level<br>of your brand<br><em>starts here.</em>',
       heroIntro: 'Videos, images and digital experiences.<br>From the first idea to the final frame, with AI<br class="desktop"> and creative direction.',
       heroButton: 'Explore our services <span>↓</span>', heroBottom: 'HUMAN IDEAS. EXPANDED POSSIBILITIES.', scroll: 'SCROLL TO ANIMATE ↓',
+      scrollShowcaseTitle: 'FROM IDEA TO IMPACT', scrollShowcaseStages: ['IDEA','CREATION','MOTION'],
       servicesEyebrow: '01 / WHAT WE CREATE', servicesTitle: 'Your idea.<br><span>In another dimension.</span>', servicesIntro: 'Content designed for your business.<br>Choose the format. Creation begins<br>with what your brand needs to say.',
       serviceLabels: ['01 / VIDEO','02 / SOCIAL','03 / IMAGES','04 / CHARACTERS','05 / MOTION','06 / DIGITAL'],
       serviceTitles: ['AI films &<br>campaigns','Content made<br>for the feed','Images that<br>elevate your brand','Digital avatars &<br>presenters','Animation &<br>post-production','Websites & experiences<br>for your brand'],
@@ -104,7 +106,7 @@
     document.title = t.title;
     q('meta[name="description"]').content = t.description;
     qa('nav > div:not(.lang-switch) a').forEach((el, index) => { el.textContent = t.nav[index]; });
-    setText('.nav-cta', t.cta); setText('.hero-copy .eyebrow', t.heroEyebrow); setHtml('.hero-copy h1', t.heroTitle); setHtml('.hero-copy .intro', t.heroIntro); setHtml('.hero-copy .button', t.heroButton); setText('.hero-bottom > span:first-child', t.heroBottom); setText('.scroll-label', t.scroll);
+    setText('.nav-cta', t.cta); setText('.hero-copy .eyebrow', t.heroEyebrow); setHtml('.hero-copy h1', t.heroTitle); setHtml('.hero-copy .intro', t.heroIntro); setHtml('.hero-copy .button', t.heroButton); setText('.hero-bottom > span:first-child', t.heroBottom); setText('.scroll-label', t.scroll); setText('.scroll-showcase > p', t.scrollShowcaseTitle); qa('.scroll-showcase i').forEach((el, index) => { el.textContent = t.scrollShowcaseStages[index]; });
     const services = q('#servicos'); setText('.section-head .eyebrow', t.servicesEyebrow, services); setHtml('.section-head h2', t.servicesTitle, services); setHtml('.section-head > p', t.servicesIntro, services);
     qa('.service', services).forEach((service, index) => { setText('.number', t.serviceLabels[index], service); setHtml('h3', t.serviceTitles[index], service); setText(':scope > p', t.serviceDescriptions[index], service); qa('.tags span', service).forEach((tag, tagIndex) => { tag.textContent = t.serviceTags[index][tagIndex]; }); const detail = q('details', service); setSummary(detail, t.detailLabel); setText('p', t.serviceDetails[index], detail); });
     const about = q('#sobre'); setText('.eyebrow', t.aboutEyebrow, about); setHtml('h2', t.aboutTitle, about); qa('.about-copy > p:not(.eyebrow)', about).forEach((el, index) => { el.textContent = t.aboutParagraphs[index]; }); qa('.about-skills span', about).forEach((el, index) => { el.textContent = t.aboutSkills[index]; }); setText('.about-visual > span', t.aboutCaption, about); setText('.about-signature span', t.aboutRole, about); q('.about-video', about).setAttribute('aria-label', t.aboutAlt);
